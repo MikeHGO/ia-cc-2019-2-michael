@@ -18,7 +18,7 @@ if __name__ == "__main__":
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts)
     app = QApplication(sys.argv)
 
-    ui_file = QFile("mainwindow.ui")
+    ui_file = QFile("hello_world.ui")
     ui_file.open(QFile.ReadOnly)
     loader = QUiLoader()
     window = loader.load(ui_file)

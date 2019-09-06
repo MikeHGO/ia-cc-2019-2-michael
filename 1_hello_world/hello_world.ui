@@ -6,26 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>343</width>
-    <height>356</height>
+    <width>274</width>
+    <height>199</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
+  <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QPushButton" name="helloPushButton">
       <property name="text">
-       <string>HELLO QT</string>
+       <string>hello QT</string>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QLabel" name="helloLabel">
       <property name="text">
-       <string>TextLabel</string>
+       <string>hello Mike</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -34,17 +34,21 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
+  <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>343</width>
+     <width>274</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -53,11 +57,10 @@
    </attribute>
    <addaction name="actionReset"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionReset">
    <property name="icon">
-    <iconset resource="resource.qrc">
-     <normaloff>:/img/resetIcon.png</normaloff>:/img/resetIcon.png</iconset>
+    <iconset>
+     <normaloff>resetIcon.png</normaloff>resetIcon.png</iconset>
    </property>
    <property name="text">
     <string>Reset</string>
@@ -65,14 +68,8 @@
    <property name="toolTip">
     <string>Reset</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+R</string>
-   </property>
   </action>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="resource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
