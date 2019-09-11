@@ -18,14 +18,6 @@ p_i_0 = 70
 p_s_0 = 30
 p_s_1 = 70
 
-def on_calcular_pushbutton_clicked():
-    d_p = dinheiro_pouco()
-    d_r = dinheiro_razoavel()
-    d_a = dinheiro_adquado()
-    p_i = pessoal_insuficiente()
-    p_s = pessoal_satisfatorio()
-
-
 def dinheiro_pouco():
     dinheiro = dinheiro_sb.value()
     if dinheiro <= d_p_1:
@@ -71,6 +63,50 @@ def pessoal_satisfatorio():
     if pessoa > p_s_0 and pessoa < p_s_1:
         return (p_s_0-pessoa)/(p_s_1-p_s_0)
 
+def regras(vet):# RISCOS
+
+    if(dinheiro_pouco() > pessoal_insuficiente()):
+        alto = dinheiro_pouco()
+    else:
+        alto = pessoal_insuficiente()
+    if(dinheiro_pouco() < pessoal_satisfatorio()):
+        alto2 = dinheiro_pouco()
+    else:
+        alto2 = pessoal_satisfatorio()
+    # Alto
+    if(alto < alto2):
+        vet[2] = alto
+    else:
+        vet[2] = alto2
+    # Medio
+    if(dinheiro_razoavel() < pessoal_satisfatorio()):
+        vet[1] = dinheiro_razoavel()
+    else:
+        vet[1] = pessoal_satisfatorio()
+    # Baixo
+    if(dinheiro_adquado() < pessoal_satisfatorio()):
+        vet[0] = dinheiro_adquado()
+    else:
+        vet[0] = pessoal_satisfatorio()
+
+def on_calcular_pushbutton_clicked():
+    intervalos = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+    vet = [0, 0, 0]
+    regras(vet)
+    print(vet)
+    numerador = 0; denominador = 0; count = 0; j = 0
+    for i in intervalos:
+        if(count == 3 or count == 6):
+            j += 1
+
+        count += 1
+        print(i,vet[j],count)
+        numerador += i*vet[j]
+        denominador += vet[j]
+    calc = numerador/denominador
+    risco_label2.setText(str(calc))
+
+
 if __name__ == "__main__":
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts)
     app = QApplication(sys.argv)
@@ -101,7 +137,6 @@ if __name__ == "__main__":
 
     calcular_btn = window.findChild(QPushButton, 'calcularPushButton')
     calcular_btn.clicked.connect(on_calcular_pushbutton_clicked)
-
 
     window.show()
 
