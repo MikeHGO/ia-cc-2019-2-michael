@@ -94,7 +94,6 @@ def on_calcular_pushbutton_clicked():
             j += 1
 
         count += 1
-        print(i,vet[j],count)
         numerador += i*vet[j]
         denominador += vet[j]
     if denominador != 0:
