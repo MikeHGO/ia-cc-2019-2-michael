@@ -5,63 +5,50 @@ from PySide2.QtWidgets import QApplication, QLabel, \
     QPushButton, QSpinBox, QAction
 from PySide2.QtCore import QFile
 
-d_p_1 = 30
-d_p_0 = 50
-d_r_0 = 30
-d_r_1 = 50
-d_r_00 = 70
-d_a_0 = 50
-d_a_1 = 70
-
-p_i_1 = 30
-p_i_0 = 70
-p_s_0 = 30
-p_s_1 = 70
-
 def dinheiro_pouco():
     dinheiro = dinheiro_sb.value()
-    if dinheiro <= d_p_1:
+    if dinheiro <= 30:
         return 1
-    if dinheiro > d_p_1 and dinheiro < d_p_0:
-        return (d_p_0-dinheiro)/(d_p_0-d_p_1)
-    if dinheiro >= d_p_0:
+    if dinheiro > 30 and dinheiro < 50:
+        return (50 - dinheiro) / 20
+    if dinheiro >= 50:
         return 0
 def dinheiro_razoavel():
     dinheiro = dinheiro_sb.value()
-    if dinheiro <= d_r_0:
+    if dinheiro <= 30:
         return 0
-    if dinheiro > d_r_0 and dinheiro < d_r_1:
-        return (d_r_1-dinheiro)/(d_r_1-d_r_0)
-    if dinheiro < d_r_00 and dinheiro > d_r_1:
-        return (d_r_00 - dinheiro)/(d_r_00-d_r_1)
-    if dinheiro >= d_r_00:
+    if dinheiro > 30 and dinheiro < 50:
+        return (dinheiro - 30) / 20
+    if dinheiro < 70 and dinheiro > 50:
+        return (70 - dinheiro) / 20
+    if dinheiro >= 70:
         return 0
 
 def dinheiro_adquado():
     dinheiro = dinheiro_sb.value()
-    if dinheiro <= d_a_0:
+    if dinheiro <= 50:
         return 0
-    if dinheiro > d_a_0 and dinheiro < d_a_1:
-        return (d_a_1-dinheiro)/(d_a_1-d_a_0)
-    if dinheiro >= d_a_1:
+    if dinheiro > 50 and dinheiro < 70:
+        return (dinheiro - 50) / 20
+    if dinheiro >= 70:
         return 1
 
 def pessoal_insuficiente():
     pessoa = pessoas_sb.value()
-    if pessoa <= p_i_1:
+    if pessoa <= 30:
         return 1
-    if pessoa > p_i_1 and pessoa < p_i_0:
-        return (p_i_0-pessoa)/(p_i_0-p_i_1)
-    if pessoa >= p_i_0:
+    if pessoa > 30 and pessoa < 70:
+        return (70 - pessoa) / 40
+    if pessoa >= 70:
         return 0
 def pessoal_satisfatorio():
     pessoa = pessoas_sb.value()
-    if pessoa <= p_s_0:
+    if pessoa <= 30:
         return 0
-    if pessoa >= p_s_1:
+    if pessoa >= 70:
         return 1
-    if pessoa > p_s_0 and pessoa < p_s_1:
-        return (p_s_0-pessoa)/(p_s_1-p_s_0)
+    if pessoa > 30 and pessoa < 70:
+        return (pessoa - 30) / 40
 
 def regras(vet):# RISCOS
 
@@ -89,11 +76,18 @@ def regras(vet):# RISCOS
     else:
         vet[0] = pessoal_satisfatorio()
 
+def risco(valor):
+    if valor >= 0 or valor < 50:
+        return 'Baixo'
+    if valor >= 50 or valor < 70:
+        return 'Medio'
+    if valor >= 70:
+        return 'Alto'
+
 def on_calcular_pushbutton_clicked():
     intervalos = [10, 20, 30, 40, 50, 60, 70, 80, 90]
     vet = [0, 0, 0]
     regras(vet)
-    print(vet)
     numerador = 0; denominador = 0; count = 0; j = 0
     for i in intervalos:
         if(count == 3 or count == 6):
@@ -103,8 +97,12 @@ def on_calcular_pushbutton_clicked():
         print(i,vet[j],count)
         numerador += i*vet[j]
         denominador += vet[j]
-    calc = numerador/denominador
-    risco_label2.setText(str(calc))
+    if denominador != 0:
+        calc = numerador/denominador
+    elif denominador == 0:
+        calc = 0
+
+    risco_label2.setText(risco(calc)+': '+(str(calc)))
 
 
 if __name__ == "__main__":
@@ -138,6 +136,6 @@ if __name__ == "__main__":
     calcular_btn = window.findChild(QPushButton, 'calcularPushButton')
     calcular_btn.clicked.connect(on_calcular_pushbutton_clicked)
 
-    window.show()
+    window.show()   
 
     sys.exit(app.exec_())
