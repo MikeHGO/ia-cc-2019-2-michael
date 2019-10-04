@@ -13,13 +13,14 @@ class Hebb:
 
     def passo_n(self):
         print("\t\t\t\tHebb Rule\n")
-        print("Entradas\t\t\tSaida\t\t\tPesos\n")
+        print("Entradas\t\t\tSaida\t\tPesos\n")
         for ct in self.conjunto_treinamento:
             entrada = list(ct[0])
             saida = ct[1]
             for i in range(len(self.pesos)):
                 self.pesos[i] = self.pesos[i] + entrada[i] * saida
-            print(ct[0], "          ", ct[1], "         ", self.pesos)
+            #print(ct[0], "          ", ct[1], "         ", self.pesos)
+            print('({: d} {: d} {: d})\t\t\t{: d}\t\t\t({: d} {: d} {: d})'.format(ct[0][0],ct[0][1],ct[0][2],ct[1],self.pesos[0],self.pesos[1],self.pesos[2]))
 
 
 
