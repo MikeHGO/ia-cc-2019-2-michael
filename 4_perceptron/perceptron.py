@@ -31,7 +31,7 @@ class Perceptron:
                 if(saida_y != saida):
                     for i in range(len(self.pesos)):
                         self.pesos[i] = self.pesos[i] + entrada[i] * self.alpha * saida
-                print('({: d} {: d} {: d})\t\t\t{: d}\t\t\t({: d} {: d} {: d})'.format(ct[0][0], ct[0][1], ct[0][2], ct[1],self.pesos[0], self.pesos[1], self.pesos[2]))
+                print('({: d} {: d} {: d} )\t\t\t{: d}\t\t\t({: d} {: d} {: d} )'.format(ct[0][0], ct[0][1], ct[0][2], ct[1],self.pesos[0], self.pesos[1], self.pesos[2]))
             epoca += 1
             print()
             if (p_old == self.pesos and epoca != 1):
