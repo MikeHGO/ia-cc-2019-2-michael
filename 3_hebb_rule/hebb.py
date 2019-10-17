@@ -20,7 +20,7 @@ class Hebb:
             for i in range(len(self.pesos)):
                 self.pesos[i] = self.pesos[i] + entrada[i] * saida
             #print(ct[0], "          ", ct[1], "         ", self.pesos)
-            print('({: d} {: d} {: d})\t\t\t{: d}\t\t\t({: d} {: d} {: d})'.format(ct[0][0],ct[0][1],ct[0][2],ct[1],self.pesos[0],self.pesos[1],self.pesos[2]))
+            print('({: d} {: d} {: d} )\t\t\t{: d}\t\t\t({: d} {: d} {: d} )'.format(ct[0][0],ct[0][1],ct[0][2],ct[1],self.pesos[0],self.pesos[1],self.pesos[2]))
 
 
 
