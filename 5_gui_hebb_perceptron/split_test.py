@@ -31,14 +31,11 @@ if __name__ == "__main__":
     entrada = "1 1 1 1\n1 -1 1 -1\n-1 1 1 -1\n-1 -1 1 -1"
     print (entrada)
 
-    funciona = hebb_split(entrada)
-    print(funciona)
+    print(hebb_split(entrada))
 
     # ([([1, 1, 1], 1), ([1, -1, 1], -1), [-1, 1, 1], -1), ([-1, -1, 1], -1)], 1, 0)
     entrada = "1 1 1 1\n1 -1 1 -1\n-1 1 1 -1\n-1 -1 1 -1\n1\n0"
 
-    listinha = perceptron_split(entrada)
-
-    print(listinha)
+    print(perceptron_split(entrada))
 
 
