@@ -1,73 +1,20 @@
-import sys, resource
+import sys
 from PySide2 import QtCore
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtWidgets import QApplication, QLabel, QPushButton, QLineEdit, QRadioButton, QPlainTextEdit, QMessageBox
 from PySide2.QtCore import QFile
-from hebb import Hebb
-from perceptron import Perceptron
-
-
-def hebb_split(entradas):
-    split_1 = entradas.split("\n")
-    split_2 = []
-    for i in range(len(split_1)):
-        floats = [float(x) for x in split_1[i].split()]
-        target = floats[-1]
-        floats.pop()
-        tupleAux = (floats, target)
-        split_2.append(tupleAux)
-    return split_2
-
-def perceptron_split(entradas):
-    split_1 = entradas.split("\n")
-    split_2 = []
-    alpha_theta = []
-    for i in range(len(split_1)):
-        floats = [float(x) for x in split_1[i].split()]
-        if(i < len(split_1) - 2):
-            target = floats[-1]
-            floats.pop()
-            tupleAux = (floats, target)
-            split_2.append(tupleAux)
-        else:
-            alpha_theta.append(floats[0])
-    return [split_2, alpha_theta[0], alpha_theta[1]]
-
-def hebb_setPesos():
-    neuron_hebb = Hebb(hebb_split(treinamento_plainText.toPlainText()))
-    lista_pesos = neuron_hebb.passo_n()
-    print(lista_pesos)
-    return
-
-def perceptron_setPesos():
-    pesos = perceptron_split(treinamento_plainText.toPlainText())
-    neuron_perceptron = Perceptron(pesos[0], pesos[1], pesos[2])
-    lista_pesos = neuron_perceptron.passo_n()
-    print(lista_pesos)
 
 def on_treinar_pushbutton_clicked():
 
+    msg = QMessageBox.warning(QMessageBox(), "AVISO", "Escolha um metodo")
+
     if hebb_radio.isChecked():
-        # entrada = hebb_split(treinamento_plainText.toPlainText())
-        # print(hebb_split(treinamento_plainText.toPlainText()))
-        hebb_setPesos()
-    elif perceptron_radio.isChecked():
-        perceptron_setPesos()
-    else:
-        QMessageBox.warning(QMessageBox(), "AVISO", "Escolha um metodo")
-        return
+        resposta_label.setText("1")
     teste_lineEdit.setFocus()
     return 1
 
 def on_testar_pushbutton_clicked():
-
-    if p1_label.text() == "":
-        QMessageBox.warning(QMessageBox(), "AVISO", "Execute o treinamento")
-        teste_lineEdit.clear()
-        treinamento_plainText.setFocus()
-        return
-
-    return
+    return 1
 
 
 if __name__ == "__main__":
@@ -94,19 +41,18 @@ if __name__ == "__main__":
 
     saida_label = window.findChild(QLabel, 'saidaLabel')
 
-    peso1_label = window.findChild(QLabel, 'peso1Label')
-
-    peso2_label = window.findChild(QLabel, 'peso2Label')
-
-    pesoB_label = window.findChild(QLabel, 'pesoBLabel')
-
-    # saidas...
-
     p1_label = window.findChild(QLabel, 'p1Label')
 
     p2_label = window.findChild(QLabel, 'p2Label')
 
     pB_label = window.findChild(QLabel, 'pBLabel')
+
+    # saidas...
+    peso1_label = window.findChild(QLabel, 'peso1Label')
+
+    peso2_label = window.findChild(QLabel, 'peso2Label')
+
+    pesoB_label = window.findChild(QLabel, 'pesoBLabel')
 
     resposta_label = window.findChild(QLabel, 'respostaLabel')
 
