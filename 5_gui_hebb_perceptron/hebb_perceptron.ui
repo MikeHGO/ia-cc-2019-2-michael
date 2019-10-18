@@ -86,7 +86,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Saida</string>
+     <string>Saida:</string>
     </property>
    </widget>
    <widget class="QLabel" name="respostaLabel">
@@ -118,7 +118,7 @@
    <widget class="QPushButton" name="treinamentoPushButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>291</x>
       <y>40</y>
       <width>41</width>
       <height>20</height>
@@ -131,7 +131,7 @@
    <widget class="QPushButton" name="testePushButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>423</x>
       <y>40</y>
       <width>41</width>
       <height>20</height>
