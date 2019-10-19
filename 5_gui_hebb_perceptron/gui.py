@@ -6,6 +6,10 @@ from PySide2.QtCore import QFile
 from hebb import Hebb
 from perceptron import Perceptron
 
+# 1 1 1 1
+# 1 -1 1 -1
+# -1 1 1 -1
+# -1 -1 1 -1
 
 def hebb_split(entradas):
     split_1 = entradas.split("\n")
@@ -36,14 +40,19 @@ def perceptron_split(entradas):
 def hebb_setPesos():
     neuron_hebb = Hebb(hebb_split(treinamento_plainText.toPlainText()))
     lista_pesos = neuron_hebb.passo_n()
-    print(lista_pesos)
+    # p1_label.setText(str(lista_pesos[0])
+    p1_label.setText("{: f}".format(lista_pesos[0]))
+    p2_label.setText("{: f}".format(lista_pesos[1]))
+    pB_label.setText("{: f}".format(lista_pesos[2]))
     return
 
 def perceptron_setPesos():
     pesos = perceptron_split(treinamento_plainText.toPlainText())
     neuron_perceptron = Perceptron(pesos[0], pesos[1], pesos[2])
     lista_pesos = neuron_perceptron.passo_n()
-    print(lista_pesos)
+    p1_label.setText("{: f}".format(lista_pesos[0]))
+    p2_label.setText("{: f}".format(lista_pesos[1]))
+    pB_label.setText("{: f}".format(lista_pesos[2]))
 
 def on_treinar_pushbutton_clicked():
     if treinamento_plainText.toPlainText() == "":
