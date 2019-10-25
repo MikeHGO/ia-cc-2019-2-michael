@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;xi bi si&lt;/p&gt;&lt;p&gt;α θ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;xi b s&lt;/p&gt;&lt;p&gt;α θ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="testeLineEdit">
@@ -35,6 +35,9 @@
       <width>113</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;xi xi+1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="treinamentoLabel">
@@ -203,7 +206,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>W3:</string>
+     <string>Wb:</string>
     </property>
    </widget>
    <widget class="QLabel" name="p1Label">

@@ -45,9 +45,9 @@ def hebb_setPesos():
     lista_pesos = entradas.passo_n()
     neurinho.entradas = hebb_split(treinamento_plainText.toPlainText())
     neurinho.lista_pesos = lista_pesos
-    p1_label.setText("{: f}".format(lista_pesos[0]))
-    p2_label.setText("{: f}".format(lista_pesos[1]))
-    pB_label.setText("{: f}".format(lista_pesos[2]))
+    p1_label.setText("{: .2f}".format(lista_pesos[0]))
+    p2_label.setText("{: .2f}".format(lista_pesos[1]))
+    pB_label.setText("{: .2f}".format(lista_pesos[2]))
     return
 
 def perceptron_setPesos():
@@ -56,9 +56,9 @@ def perceptron_setPesos():
     lista_pesos = neuron_perceptron.passo_n()
     neurinho.entradas = entradas
     neurinho.lista_pesos = lista_pesos
-    p1_label.setText("{: f}".format(lista_pesos[0]))
-    p2_label.setText("{: f}".format(lista_pesos[1]))
-    pB_label.setText("{: f}".format(lista_pesos[2]))
+    p1_label.setText("{: .2f}".format(lista_pesos[0]))
+    p2_label.setText("{: .2f}".format(lista_pesos[1]))
+    pB_label.setText("{: .2f}".format(lista_pesos[2]))
 
 def on_treinar_pushbutton_clicked():
     if treinamento_plainText.toPlainText() == "":
@@ -81,6 +81,12 @@ def on_testar_pushbutton_clicked():
         teste_lineEdit.clear()
         treinamento_plainText.setFocus()
         return
+
+    if teste_lineEdit.text() == "":
+        QMessageBox.warning(QMessageBox(), "AVISO", "Informe as entradas")
+        teste_lineEdit.setFocus()
+        return
+
     if hebb_radio.isChecked():
         resposta_label.setText(str(neurinho.h_saida([float(x) for x in teste_lineEdit.text().split()])))
         return
@@ -121,7 +127,6 @@ if __name__ == "__main__":
     pesoB_label = window.findChild(QLabel, 'pesoBLabel')
 
     # saidas...
-
     p1_label = window.findChild(QLabel, 'p1Label')
 
     p2_label = window.findChild(QLabel, 'p2Label')
