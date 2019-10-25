@@ -26,6 +26,9 @@ def perceptron_split(entradas):
     vai_filhao = [split_2, alpha_theta[0], alpha_theta[1]]
     return vai_filhao
 
+def teste_split(texto):
+    return [float(x) for x in "1 -1".split()]
+
 if __name__ == "__main__":
     #([([1, 1, 1], 1), ([1, -1, 1], -1), ([-1, 1, 1], -1), ([-1, -1, 1], -1)])
     entrada = "1 1 1 1\n1 -1 1 -1\n-1 1 1 -1\n-1 -1 1 -1"
@@ -38,4 +41,4 @@ if __name__ == "__main__":
 
     print(perceptron_split(entrada))
 
-
+    print(teste_split("1 -1"))
