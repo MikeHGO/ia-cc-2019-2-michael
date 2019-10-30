@@ -9,3 +9,12 @@ if __name__ == "__main__":
     gui = Gui()
     gui.window.show()
     sys.exit(app.exec_())
+
+    #1 adicionar fonte
+    #2 criar neuronios
+    #3 criar rede de neuronios
+    #train neural network -> executar o metodo train do perceptron para cada neuronio
+    #run neural network -> exibir o numero reconhecido
+    # percorrer lista de neuronios e verificar quais reconheceram a entrada
+
+    # 0 bias 0 theta 1 alpha

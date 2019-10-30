@@ -22,6 +22,7 @@ class Gui:
         # Getting widget references
         self.black = QIcon("black.png")
         self.white = QIcon("white.png")
+        self.font_cb = self.window.findChild(QComboBox, "fontComboBox")
         self.character_cb = self.window.findChild(QComboBox, "characterComboBox")
         self.train_pb = self.window.findChild(QPushButton, "trainPushButton")
         self.run_pb = self.window.findChild(QPushButton, "runPushButton")
@@ -862,7 +863,11 @@ class Gui:
         print("Run clicked")
 
     def on_train_pushbutton_clicked(self):
-        print("Train clicked")
+        i = 0
+        for n in range(10):
+            print (self.inputs [i:i+8])
+            i += 8
+        print('gime space')
 
     def populate_pixels_list(self):
         # Hard coding: display 10x8
@@ -913,12 +918,3 @@ if __name__ == "__main__":
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts)
     app = QApplication(sys.argv)
     gui = Gui()
-
-    ui_file = QFile("character_recognition.ui")
-    ui_file.open(QFile.ReadOnly)
-    loader = QUiLoader()
-    window = loader.load(ui_file)
-    ui_file.close()
-
-    window.show()
-    sys.exit(app.exec_())
