@@ -46,7 +46,9 @@ class Gui:
         # Create and populate training_set
         self.training_set = []
         self.font_a = []
-        self.populate_training_set()
+        self.font_j = []
+        self.populate_training_set('font_a.txt')
+        self.populate_training_set('font_j.txt')
 
     def on_character_combobox_current_index_changed(self):
         if int(self.character_cb.currentText()) == -1:
@@ -877,8 +879,8 @@ class Gui:
                     QPushButton, "pixel"+str(i+1)+str(j+1)))
                 self.pixels[-1].clicked.connect(getattr(self, "on_pixel_" + str(i) + str(j) + "_clicked"))
 
-    def populate_training_set(self):
-        f = open('font_a.txt').readlines()
+    def populate_training_set(self, path):
+        f = open(path).readlines()
         aux = []
         for line in f:
             if line.startswith("#"):
