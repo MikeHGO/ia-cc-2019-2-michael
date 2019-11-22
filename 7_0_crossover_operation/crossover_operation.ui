@@ -33,6 +33,11 @@
         </item>
         <item>
          <property name="text">
+          <string>Corte Duplo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>PMX</string>
          </property>
         </item>
@@ -267,7 +272,7 @@
      <x>0</x>
      <y>0</y>
      <width>454</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
