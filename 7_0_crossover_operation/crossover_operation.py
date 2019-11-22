@@ -87,13 +87,10 @@ def pmx_crossover():
     # que indicam onde os cortes serao feitos
     parts = random.sample(range(1, len(papa)), cuts)
     parts.sort()
-    parts[0] = 5
-    parts[1] = 9
     # choose: vetor de numeros aleatorios
     # que indicam os indices que serao trocados
     choose = random.sample(range(0, len(parts)+1), trades)
 
-    choose[0] = 1
     # gerando os filhos de acordo com a quantidade de cortes
     son_1 = []
     for i in range (len(parts)+1):
