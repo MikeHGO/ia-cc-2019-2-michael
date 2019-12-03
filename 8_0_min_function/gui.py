@@ -51,6 +51,9 @@ class Gui:
         self.repetitions_sb.setEnabled(False)
         self.results_multi_run_gb.setEnabled(False)
 
+        # EVEN values ONLY
+        self.population_sb.lineEdit().setEnabled(False)
+
     def on_multi_run_rb_toggled(self):
         if self.multi_run_rb.isChecked():
             self.repetitions_sb.setEnabled(True)
